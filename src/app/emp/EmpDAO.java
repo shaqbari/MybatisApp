@@ -25,7 +25,8 @@ public class EmpDAO {
 		List list=null;
 		SqlSession session=manager.getSession();
 		/*list=session.selectList("app.emp.Emp.selectAll"); config에서 allias설정하면 짧게  namaspace설정할 수 있다.*/
-		list=session.selectList("Emp.selectAll");
+		//list=session.selectList("Emp.selectAll");
+		list=session.selectList("Emp.empDeptJoin");
 		manager.close(session);
 		return list;
 	}
@@ -34,8 +35,17 @@ public class EmpDAO {
 	public Emp select(int empno) {
 		Emp emp=null;
 		SqlSession session=manager.getSession();
-		emp=session.selectOne("select", empno );
+		emp=session.selectOne("Emp.select", empno );
 		manager.close(session);
 		return emp;
 	}
+	
+	
+	
+	
+	
 }
+
+
+
+

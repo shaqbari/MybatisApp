@@ -1,3 +1,4 @@
+<%@page import="app.dept.Dept"%>
 <%@page import="app.emp.Emp"%>
 <%@page import="app.emp.EmpDAO"%>
 <%@page import="java.util.List"%>
@@ -13,15 +14,63 @@
 	EmpDAO empDAO=new EmpDAO();
 %>
 <%
-	List list=empDAO.select();
+	List<Emp> list=empDAO.select();
 	out.print("dao이용한 사원수는 "+list.size()+"<br>");
 	
-	Emp emp=empDAO.select(7369);
-	out.print("7369 사원 이름은"+emp.getEname());
+	/* Emp emp=empDAO.select(7369);
+	out.print("7369 사원 이름은"+emp.getEname()); */
+	
+	
+	
+	
 %>
+<table width="100%" border="1px">
+	<tr>
+		<td>EMPNO</td>
+		<td>ENAME</td>
+		<td>SAL</td>
+		<td>HIREDATE</td>
+		<td>COMM</td>
+		<td>MGR</td>
+		<td>DEPTNO</td>
+		<td>DNAME</td>
+		<td>LOC</td>
+	<tr>
+	<%for(int i=0; i<list.size(); i++){ %>
+		<%Emp emp=list.get(i); %>
+		<%Dept dept=emp.getDept(); %>	
+		<tr>
+			<td><%=emp.getEmpno() %></td>
+			<td><%=emp.getEname()%></td>
+			<td><%=emp.getSal() %></td>
+			<td><%=emp.getHiredate() %></td>
+			<td><%=emp.getComm() %></td>
+			<td><%=emp.getMgr() %></td>
+			<td><%=dept.getDeptno()%></td>
+			<td><%=dept.getDname() %></td>
+			<td><%=dept.getLoc()%></td>
+		<tr>
+	<%} %>
+</table>
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 <%
+
+
+
+
+
+
+
 	//패키지에 들어있는 파일이 클래스가 아닌, 일반파일인 경우
 	//도트가 아닌 그냥 /로 접근해야 한다.
 	/* String resource = "mybatis/config/config.xml";

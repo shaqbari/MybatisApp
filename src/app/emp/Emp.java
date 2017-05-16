@@ -1,5 +1,7 @@
 package app.emp;
 
+import app.dept.Dept;
+
 public class Emp {
 	private int empno;
 	private String ename;
@@ -9,6 +11,15 @@ public class Emp {
 	private int sal;
 	private int comm;
 	private int deptno;
+	private Dept dept;//¡∂¿Œ«“ table
+
+	public Dept getDept() {
+		return dept;
+	}
+
+	public void setDept(Dept dept) {
+		this.dept = dept;
+	}
 
 	public int getEmpno() {
 		return empno;
